@@ -2,7 +2,7 @@
 #  Alacritty Pro Configuration (Dracula Theme Optimized)
 # ==============================================================================
 
-# --- 1. 視窗設定 (Window Settings) ---
+# --- 1. 視窗外觀與行為 (Window Appearance & Behavior) ---
 [window]
 dimensions = { columns = 100, lines = 28 }
 padding = { x = 12, y = 12 }
@@ -13,7 +13,8 @@ blur = true
 title = "Alacritty - Terminal"
 class = { instance = "Alacritty", general = "Alacritty" }
 
-# --- 2. 字體設定 (Font Settings) ---
+# --- 2. 字體系統配置 (Font System Configuration) ---
+# 使用 JetBrainsMono Nerd Font 以獲得最佳開發體驗與圖示支援
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
@@ -22,9 +23,9 @@ size = 14.0
 
 [font.offset]
 x = 0
-y = 2 # 稍微增加行高，長篇程式碼閱讀更輕鬆
+y = 2 # 增加垂直行高，降低長篇程式碼閱讀時的視覺疲勞
 
-# --- 3. 顏色配置 (Dracula Theme) ---
+# --- 3. 色彩方案：經典 Dracula (Color Scheme: Dracula) ---
 [colors.primary]
 background            = "#282A36"
 foreground            = "#F8F8F2"
@@ -63,20 +64,20 @@ magenta               = "#FF92DF"
 cyan                  = "#A4FFFF"
 white                 = "#FFFFFF"
 
-# --- 4. 游標與滾動 (Cursor & Scrolling) ---
+# --- 4. 游標與滾動緩衝 (Cursor & Scrollback) ---
 [cursor]
 style = { shape = "Beam", blinking = "On" }
 blink_interval = 500
 thickness = 0.15
 
 [scrolling]
-history = 10000
+history = 10000 # 保持較長的滾動紀錄以便回溯
 multiplier = 3
 
-# --- 5. 點擊偵測 (Hints - URL 點擊) ---
-# 按下 Ctrl+Shift+U 會高亮所有網址，按下對應字母即可開啟
+# --- 5. 互動式提示與網址偵測 (Interactive Hints - URL Detection) ---
+# 快捷鍵 Ctrl+Shift+U：進入高亮模式，按對應鍵盤字母即可開啟網址
 [[hints.enabled]]
-command = "xdg-open" # Linux 下使用 xdg-open 開啟網址
+command = "xdg-open" # Linux 環境下預設使用 xdg-open
 hyperlinks = true
 post_processing = true
 persist = false
@@ -84,32 +85,54 @@ mouse = { enabled = true, mods = "None" }
 binding = { key = "U", mods = "Control|Shift" }
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
 
-# --- 6. 鍵位綁定 (Key Bindings) ---
-# 這裡新增了許多方便的快捷鍵
+# --- 6. 核心快捷鍵綁定 (Core Key Bindings) ---
+# 此處定義了常用的效率提升快捷鍵
 [[keyboard.bindings]]
-key = "V", mods = "Control|Shift", action = "Paste"
-[[keyboard.bindings]]
-key = "C", mods = "Control|Shift", action = "Copy"
-[[keyboard.bindings]]
-key = "F", mods = "Control|Shift", action = "SearchForward"
-[[keyboard.bindings]]
-key = "Equals", mods = "Control", action = "IncreaseFontSize"
-[[keyboard.bindings]]
-key = "Minus", mods = "Control", action = "DecreaseFontSize"
-[[keyboard.bindings]]
-key = "Key0", mods = "Control", action = "ResetFontSize"
-[[keyboard.bindings]]
-key = "Space", mods = "Control|Shift", action = "ToggleViMode"
-[[keyboard.bindings]]
-key = "Return", mods = "Alt", action = "ToggleFullscreen"
+key = "V"
+mods = "Control|Shift"
+action = "Paste"
 
-# --- 7. 其他行為 ---
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "F"
+mods = "Control|Shift"
+action = "SearchForward"
+
+[[keyboard.bindings]]
+key = "Equals"
+mods = "Control"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Control"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Key0"
+mods = "Control"
+action = "ResetFontSize"
+
+[[keyboard.bindings]]
+key = "Space"
+mods = "Control|Shift"
+action = "ToggleViMode"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Alt"
+action = "ToggleFullscreen"
+
+# --- 7. 選取與系統行為 (Selection & System Behavior) ---
 [selection]
-save_to_clipboard = true
+save_to_clipboard = true # 選取即自動複製到系統剪貼簿
 
 [shell]
 program = "/usr/bin/zsh"
 args = ["--login"]
 
-# 自動監控設定檔變更並即時重載 (Alacritty 0.13+ 預設行為，但明確寫出較保險)
-# 注意：較新版本的 Alacritty 此項通常是自動的，不需要特別設定 live_config_reload
+# 註：Alacritty 0.13+ 版本會自動監控設定檔變更並重載。
