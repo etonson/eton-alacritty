@@ -1,189 +1,84 @@
 # --- 視窗設定 (Window Settings) ---
-# 此區塊控制 Alacritty 視窗本身的外觀和行為。
 [window]
-# 設定視窗的初始尺寸。
-# columns 是寬度 (以字元數計)，lines 是高度 (以行數計)。
 dimensions = { columns = 100, lines = 25 }
-
-# 設定視窗內部邊緣與文字內容之間的間距 (padding)。
-# x 是左右邊距，y 是上下邊距。
 padding = { x = 12, y = 12 }
-
-# 是否啟用動態邊距。
-# 設為 true 時，邊距會套用到內容區域，即使調整視窗大小也能維持固定的邊距視覺效果。
-# 設為 false 時，邊距是固定像素，調整視窗大小可能導致內容貼邊。
 dynamic_padding = true
-
-# 設定視窗的裝飾，如標題列和邊框。
-# "full" 表示顯示完整的標題列和邊框 (預設)。
-# "none" 可以建立無邊框的視窗。
 decorations = "full"
-
-# 設定視窗的透明度。
-# 1.0 為完全不透明，0.0 為完全透明。
-opacity = 0.90        # 稍微透明感，適合搭配深色背景
-
-# 是否啟用背景模糊效果 (毛玻璃/磨砂效果)。
-# 這個選項需要您的桌面環境的 compositor 支援，例如 Picom (X11) 或 Wayland 環境內建的 compositor。
-blur = true           # 讓透明背景有磨砂玻璃感 (需 compositor 支援)
-
+opacity = 0.85        # 根據 Dracula 設定調整為 0.85
+blur = true           
 
 # --- 字體設定 (Font Settings) ---
-# 此區塊定義終端機中使用的字體。
 [font]
-# 建議安裝 Nerd Font 系列字體 (如 JetBrainsMono Nerd Font 或 FiraCode Nerd Font)，
-# 這樣才能正確顯示許多 CLI 工具中的特殊圖示 (icon)。
-
-# 一般文字的字體設定。
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
-# 粗體文字的字體設定。
 bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
-# 斜體文字的字體設定。
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+size = 12.0           # 根據 Dracula 設定調整為 12
 
-# 字體大小。
-size = 14.0
-
-# 字體偏移量設定。可用於微調字元在單元格中的位置。
 [font.offset]
-x = 0 # 水平偏移，正值向右，負值向左。
-y = 1 # 垂直偏移，正值向下，負值向上。稍微增加此值可以有效增加行高，提升閱讀舒適度。
-
+x = 0 
+y = 1 
 
 # --- 顏色配置 (Color Scheme) ---
-# 這是終端機的顏色主題設定，此處為 Catppuccin Mocha 風格 (類似 Tokyo Night)。
+# Dracula Theme
 [colors.primary]
-# 主要顏色定義。
-background            = "#1E1E2E" # 終端機背景色
-foreground            = "#CDD6F4" # 預設文字顏色 (前景色)
-dim_foreground        = "#CDD6F4" # "暗淡" 文字的顏色
-bright_foreground     = "#CDD6F4" # "明亮" 文字的顏色
+background            = "#282A36"
+foreground            = "#F8F8F2"
+dim_foreground        = "#F8F8F2"
+bright_foreground     = "#FFFFFF"
 
 [colors.cursor]
-# 普通模式下的游標顏色。
-text                  = "#1E1E2E" # 游標下方文字的顏色
-cursor                = "#F5E0DC" # 游標本身的顏色
+text                  = "#282A36"
+cursor                = "#F8F8F2"
 
 [colors.vi_mode_cursor]
-# Vi 模式下的游標顏色。
-text                  = "#1E1E2E" # 游標下方文字的顏色
-cursor                = "#B4BEFE" # 游標本身的顏色
-
-[colors.search.matches]
-# 搜尋功能 (Ctrl+Shift+F) 中，所有匹配項的顏色。
-foreground            = "#1E1E2E" # 匹配文字的顏色
-background            = "#A6ADC8" # 匹配項的背景高亮色
-
-[colors.search.focused_match]
-# 搜尋功能中，目前選中的匹配項的顏色。
-foreground            = "#1E1E2E" # 匹配文字的顏色
-background            = "#A6E3A1" # 當前匹配項的背景高亮色
-
-[colors.hints.start]
-# "Hints" 模式 (例如點擊 URL) 的起始提示標籤顏色。
-foreground            = "#1E1E2E"
-background            = "#F9E2AF"
-
-[colors.hints.end]
-# "Hints" 模式下，輸入字元後剩餘的提示標籤顏色。
-foreground            = "#1E1E2E"
-background            = "#A6ADC8"
-
-[colors.line_indicator]
-# 當前游標所在行的指示器顏色 (預設未啟用)。
-#foreground            = "None"
-#background            = "None"
-
-[colors.footer_bar]
-# 底部資訊列的顏色 (例如在 hints 模式下出現)。
-foreground            = "#1E1E2E"
-background            = "#A6ADC8"
+text                  = "#282A36"
+cursor                = "#BD93F9"
 
 [colors.selection]
-# 使用滑鼠選取文字時的顏色。
-text                  = "#1E1E2E" # 被選取文字的顏色
-background            = "#F5E0DC" # 選取區域的背景高亮色
+text                  = "CellForeground"
+background            = "#44475A"
 
-# 標準 8 色 (ANSI Colors)。
+# 標準 8 色 (ANSI Colors)
 [colors.normal]
-black                 = "#45475A"
-red                   = "#F38BA8"
-green                 = "#A6E3A1"
-yellow                = "#F9E2AF"
-blue                  = "#89B4FA"
-magenta               = "#F5C2E7"
-cyan                  = "#94E2D5"
-white                 = "#BAC2DE"
+black                 = "#000000"
+red                   = "#FF5555"
+green                 = "#50FA7B"
+yellow                = "#F1FA8C"
+blue                  = "#BD93F9"
+magenta               = "#FF79C6"
+cyan                  = "#8BE9FD"
+white                 = "#BFBFBF"
 
-# 高亮 8 色 (Bright ANSI Colors)。
+# 高亮 8 色 (Bright ANSI Colors)
 [colors.bright]
-black                 = "#585B70"
-red                   = "#F38BA8"
-green                 = "#A6E3A1"
-yellow                = "#F9E2AF"
-blue                  = "#89B4FA"
-magenta               = "#F5C2E7"
-cyan                  = "#94E2D5"
-white                 = "#A6ADC8"
+black                 = "#4D4D4D"
+red                   = "#FF6E6E"
+green                 = "#69FF94"
+yellow                = "#FFFFA5"
+blue                  = "#D6ACFF"
+magenta               = "#FF92DF"
+cyan                  = "#A4FFFF"
+white                 = "#FFFFFF"
 
-# 暗淡 8 色 (Dim ANSI Colors)。
-[colors.dim]
-black                 = "#45475A"
-red                   = "#F38BA8"
-green                 = "#A6E3A1"
-yellow                = "#F9E2AF"
-blue                  = "#89B4FA"
-magenta               = "#F5C2E7"
-cyan                  = "#94E2D5"
-white                 = "#BAC2DE"
-
-# 其他顏色相關設定。
+# 其他顏色相關設定
 [colors]
-# 額外定義或覆蓋特定的顏色索引。
-# 索引 16 和 17 通常用於橘色和奶油色。
-indexed_colors = [
-  { index = 16, color = "#FAB387" },
-  { index = 17, color = "#F5E0DC" },
-]
-
-# 是否用明亮的顏色來繪製粗體文字。
-# 設為 true 是傳統終端機的行為，許多人喜歡這種視覺區分。
 draw_bold_text_with_bright_colors = true
-
 
 # --- 游標設定 (Cursor Settings) ---
 [cursor]
-# 設定游標的樣式。
-# shape: 游標形狀，可以是 'Block' (方塊), 'Beam' (I形), 或 'Underline' (底線)。
-# blinking: 游標是否閃爍，可以是 'On', 'Off', 'Always'。
 style = { shape = "Beam", blinking = "On" }
-
-# 游標閃爍的間隔時間，單位是毫秒。
 blink_interval = 500
-
 
 # --- 捲動設定 (Scrolling Settings) ---
 [scrolling]
-# 設定歷史紀錄緩衝區的大小，也就是可以向上捲動回顧的最大行數。
 history = 10000
-
-# 使用滑鼠滾輪或觸控板捲動時，一次捲動的行數。
 multiplier = 3
-
 
 # --- 其他效能與行為 (Miscellaneous Behavior) ---
 [selection]
-# 選取文字後是否自動將其複製到系統剪貼簿。
-save_to_clipboard = true # 選取即複製，非常方便
-
+save_to_clipboard = true 
 
 # --- Shell 設定 ---
-# 指定 Alacritty 啟動時要執行的 Shell 程式。
 [shell]
-# Shell 程式的絕對路徑。
 program               = "/usr/bin/zsh"
-
-# 傳遞給 Shell 程式的啟動參數。
-# "--login" 會讓 shell 作為一個 "login shell" 啟動，
-# 這會使其讀取 /etc/profile 和 ~/.profile 或 ~/.zprofile 等設定檔。
 args                  = [ "--login", ]
