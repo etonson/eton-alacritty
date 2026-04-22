@@ -1,42 +1,43 @@
-# My Alacritty Configuration
+# My Alacritty Configuration (Pro Edition)
 
-這是我的個人 Alacritty 終端機設定檔，旨在提供一個美觀、高效且易於閱讀的終端環境。
+這是經過深度優化的 Alacritty 終端機設定檔，基於 **Dracula** 主題並整合了多項提升效率的功能。
 
-## 📋 特色亮點
+## 📋 進階特色
 
-- **配色方案**: 使用經典的 **Dracula** 主題，具有高對比度且色彩豐富。
-- **透明效果**: 啟動了 85% 的透明度，並包含背景模糊（Blur）效果。
-- **字體優化**: 預設使用 **JetBrainsMono Nerd Font**，字體大小為 12px，提供清晰的閱讀體驗。
-- **實用功能**:
-  - 選取文字後自動複製到剪貼簿。
-  - 10,000 行的歷史滾動記錄。
-  - 預設 Shell 設定為 `zsh` 並以 login shell 模式啟動。
-  - 游標樣式為閃爍的 `Beam`。
+- **配色方案**: 經典 **Dracula** 主題。
+- **透明與模糊**: 85% 透明度 + 背景模糊 (需 Compositor 支援)。
+- **字體優化**: **JetBrainsMono Nerd Font** (14px)，行高 `offset.y = 2` 提升長文閱讀舒適度。
+- **URL 點擊支援**: 使用快捷鍵進入 Hints 模式直接開啟網址。
+- **自動重載**: 修改 `alacritty.toml` 後即時生效，無需重啟終端機。
+
+## ⌨️ 快捷鍵清單 (Key Bindings)
+
+| 動作 | 快捷鍵 |
+| :--- | :--- |
+| **複製 / 貼上** | `Ctrl + Shift + C` / `V` |
+| **搜尋內容** | `Ctrl + Shift + F` |
+| **字體放大 / 縮小** | `Ctrl + +` / `-` |
+| **重置字體大小** | `Ctrl + 0` |
+| **進入 Vi 模式** | `Ctrl + Shift + Space` |
+| **網址跳轉 (Hints)** | `Ctrl + Shift + U` |
+| **全螢幕切換** | `Alt + Enter` |
 
 ## 🛠️ 安裝與使用
 
 ### 1. 必要條件
-
-在套用此設定前，請確保您的系統已安裝以下組件：
-
-- **Alacritty**: 現代化的高效能 GPU 加速終端機。
-- **JetBrainsMono Nerd Font**: 建議安裝此字體。
-- **zsh**: 本設定檔預設使用 `/usr/bin/zsh`。
+- **Alacritty** (建議 0.13+)
+- **JetBrainsMono Nerd Font**
+- **zsh**
 
 ### 2. 套用設定
-
-將 `alacritty.toml` 放置到您的 Alacritty 設定路徑：
-
-- **Linux/macOS**: `~/.config/alacritty/alacritty.toml`
-- **Windows**: `%APPDATA%\alacritty\alacritty.toml`
+將 `alacritty.toml` 複製到 `~/.config/alacritty/alacritty.toml`。
 
 ## 🔍 設定細節摘要
 
 | 項目 | 設定值 |
 | :--- | :--- |
-| **視窗尺寸** | 100 欄 x 25 行 |
 | **不透明度** | 0.85 (搭配 Blur) |
-| **字體大小** | 12.0 px |
+| **字體大小** | 14.0 px |
 | **配色** | Dracula |
 | **預設 Shell** | zsh (with --login) |
 

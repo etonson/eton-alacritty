@@ -1,25 +1,30 @@
-# --- 視窗設定 (Window Settings) ---
+# ==============================================================================
+#  Alacritty Pro Configuration (Dracula Theme Optimized)
+# ==============================================================================
+
+# --- 1. 視窗設定 (Window Settings) ---
 [window]
-dimensions = { columns = 100, lines = 25 }
+dimensions = { columns = 100, lines = 28 }
 padding = { x = 12, y = 12 }
 dynamic_padding = true
 decorations = "full"
-opacity = 0.85        # 根據 Dracula 設定調整為 0.85
-blur = true           
+opacity = 0.85
+blur = true
+title = "Alacritty - Terminal"
+class = { instance = "Alacritty", general = "Alacritty" }
 
-# --- 字體設定 (Font Settings) ---
+# --- 2. 字體設定 (Font Settings) ---
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
-size = 14.0           # 根據 Dracula 設定調整為 12
+size = 14.0
 
 [font.offset]
-x = 0 
-y = 1 
+x = 0
+y = 2 # 稍微增加行高，長篇程式碼閱讀更輕鬆
 
-# --- 顏色配置 (Color Scheme) ---
-# Dracula Theme
+# --- 3. 顏色配置 (Dracula Theme) ---
 [colors.primary]
 background            = "#282A36"
 foreground            = "#F8F8F2"
@@ -38,7 +43,6 @@ cursor                = "#BD93F9"
 text                  = "CellForeground"
 background            = "#44475A"
 
-# 標準 8 色 (ANSI Colors)
 [colors.normal]
 black                 = "#000000"
 red                   = "#FF5555"
@@ -49,7 +53,6 @@ magenta               = "#FF79C6"
 cyan                  = "#8BE9FD"
 white                 = "#BFBFBF"
 
-# 高亮 8 色 (Bright ANSI Colors)
 [colors.bright]
 black                 = "#4D4D4D"
 red                   = "#FF6E6E"
@@ -60,25 +63,53 @@ magenta               = "#FF92DF"
 cyan                  = "#A4FFFF"
 white                 = "#FFFFFF"
 
-# 其他顏色相關設定
-[colors]
-draw_bold_text_with_bright_colors = true
-
-# --- 游標設定 (Cursor Settings) ---
+# --- 4. 游標與滾動 (Cursor & Scrolling) ---
 [cursor]
 style = { shape = "Beam", blinking = "On" }
 blink_interval = 500
+thickness = 0.15
 
-# --- 捲動設定 (Scrolling Settings) ---
 [scrolling]
 history = 10000
 multiplier = 3
 
-# --- 其他效能與行為 (Miscellaneous Behavior) ---
-[selection]
-save_to_clipboard = true 
+# --- 5. 點擊偵測 (Hints - URL 點擊) ---
+# 按下 Ctrl+Shift+U 會高亮所有網址，按下對應字母即可開啟
+[[hints.enabled]]
+command = "xdg-open" # Linux 下使用 xdg-open 開啟網址
+hyperlinks = true
+post_processing = true
+persist = false
+mouse = { enabled = true, mods = "None" }
+binding = { key = "U", mods = "Control|Shift" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
 
-# --- Shell 設定 ---
+# --- 6. 鍵位綁定 (Key Bindings) ---
+# 這裡新增了許多方便的快捷鍵
+[[keyboard.bindings]]
+key = "V", mods = "Control|Shift", action = "Paste"
+[[keyboard.bindings]]
+key = "C", mods = "Control|Shift", action = "Copy"
+[[keyboard.bindings]]
+key = "F", mods = "Control|Shift", action = "SearchForward"
+[[keyboard.bindings]]
+key = "Equals", mods = "Control", action = "IncreaseFontSize"
+[[keyboard.bindings]]
+key = "Minus", mods = "Control", action = "DecreaseFontSize"
+[[keyboard.bindings]]
+key = "Key0", mods = "Control", action = "ResetFontSize"
+[[keyboard.bindings]]
+key = "Space", mods = "Control|Shift", action = "ToggleViMode"
+[[keyboard.bindings]]
+key = "Return", mods = "Alt", action = "ToggleFullscreen"
+
+# --- 7. 其他行為 ---
+[selection]
+save_to_clipboard = true
+
 [shell]
-program               = "/usr/bin/zsh"
-args                  = [ "--login", ]
+program = "/usr/bin/zsh"
+args = ["--login"]
+
+# 自動監控設定檔變更並即時重載 (Alacritty 0.13+ 預設行為，但明確寫出較保險)
+# 注意：較新版本的 Alacritty 此項通常是自動的，不需要特別設定 live_config_reload
